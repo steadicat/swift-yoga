@@ -1,0 +1,5 @@
+module CCSSLayout [system][extern_c] {
+  header "../css-layout/CSSLayout/CSSLayout.h"
+  header "../css-layout/CSSLayout/CSSMacros.h"
+  export *
+}
