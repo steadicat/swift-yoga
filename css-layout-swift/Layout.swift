@@ -302,7 +302,6 @@ public class Node {
       }
       let width = widthMode == CSSMeasureModeUndefined ? CGFloat.infinity : CGFloat(width)
       let height = heightMode == CSSMeasureModeUndefined ? CGFloat.infinity : CGFloat(height)
-      print(width, widthMode, height, heightMode)
       let size = measure(CGSize(width: width, height: height))
       return CSSSize(width: Float(size.width), height: Float(size.height))
     }
