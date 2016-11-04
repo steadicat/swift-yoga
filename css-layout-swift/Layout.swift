@@ -292,7 +292,6 @@ public class Node {
     }
     CSSNodeSetContext(node, Unmanaged<Node>.passUnretained(self).toOpaque())
     CSSNodeSetMeasureFunc(node) { (node: Optional<OpaquePointer>, width: Float, widthMode: CSSMeasureMode, height: Float, heightMode: CSSMeasureMode) -> CSSSize in
-      // TODO: use modes?
       guard let context = CSSNodeGetContext(node) else {
         print("Warning: called measure on a node that is now gone")
         return CSSSize(width: width, height: height)
@@ -301,7 +300,10 @@ public class Node {
         print("Warning: called measure on a node without a measure function")
         return CSSSize(width: width, height: height)
       }
-      let size = measure(CGSize(width: CGFloat(width), height: CGFloat(height)))
+      let width = widthMode == CSSMeasureModeUndefined ? CGFloat.infinity : CGFloat(width)
+      let height = heightMode == CSSMeasureModeUndefined ? CGFloat.infinity : CGFloat(height)
+      print(width, widthMode, height, heightMode)
+      let size = measure(CGSize(width: width, height: height))
       return CSSSize(width: Float(size.width), height: Float(size.height))
     }
   }

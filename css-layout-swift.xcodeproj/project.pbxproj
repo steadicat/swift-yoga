@@ -14,8 +14,8 @@
 		7B126FFD1DCBB82400E0E888 /* CSSNodeList.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B126FF81DCBB82400E0E888 /* CSSNodeList.h */; };
 		7B1270061DCBE6D500E0E888 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1270051DCBE6D500E0E888 /* Layout.swift */; };
 		7B1270081DCBF68B00E0E888 /* CSSLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B126FDF1DCBB75400E0E888 /* CSSLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7B1270171DCC03D100E0E888 /* CSSLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1270161DCC03D100E0E888 /* CSSLayoutTests.swift */; };
 		7B1270191DCC03D100E0E888 /* CSSLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B126FDC1DCBB75400E0E888 /* CSSLayout.framework */; };
+		7B1270251DCD539700E0E888 /* CSSLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1270231DCD539700E0E888 /* CSSLayoutTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,8 +40,8 @@
 		7B126FF81DCBB82400E0E888 /* CSSNodeList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSSNodeList.h; sourceTree = "<group>"; };
 		7B1270051DCBE6D500E0E888 /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		7B1270141DCC03D000E0E888 /* CSSLayoutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CSSLayoutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7B1270161DCC03D100E0E888 /* CSSLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSSLayoutTests.swift; sourceTree = "<group>"; };
-		7B1270181DCC03D100E0E888 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B1270231DCD539700E0E888 /* CSSLayoutTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CSSLayoutTests.swift; path = "css-layout-swift-tests/CSSLayoutTests.swift"; sourceTree = SOURCE_ROOT; };
+		7B1270241DCD539700E0E888 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "css-layout-swift-tests/Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,7 +68,7 @@
 			children = (
 				7B126FDE1DCBB75400E0E888 /* css-layout-swift */,
 				7B126FF31DCBB82400E0E888 /* CSSLayout */,
-				7B1270151DCC03D100E0E888 /* CSSLayoutTests */,
+				7B1270151DCC03D100E0E888 /* css-layout-swift-tests */,
 				7B126FDD1DCBB75400E0E888 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -106,12 +106,13 @@
 			path = "css-layout/CSSLayout";
 			sourceTree = SOURCE_ROOT;
 		};
-		7B1270151DCC03D100E0E888 /* CSSLayoutTests */ = {
+		7B1270151DCC03D100E0E888 /* css-layout-swift-tests */ = {
 			isa = PBXGroup;
 			children = (
-				7B1270161DCC03D100E0E888 /* CSSLayoutTests.swift */,
-				7B1270181DCC03D100E0E888 /* Info.plist */,
+				7B1270231DCD539700E0E888 /* CSSLayoutTests.swift */,
+				7B1270241DCD539700E0E888 /* Info.plist */,
 			);
+			name = "css-layout-swift-tests";
 			path = CSSLayoutTests;
 			sourceTree = "<group>";
 		};
@@ -241,7 +242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B1270171DCC03D100E0E888 /* CSSLayoutTests.swift in Sources */,
+				7B1270251DCD539700E0E888 /* CSSLayoutTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,7 +411,7 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = C3583GYSMX;
-				INFOPLIST_FILE = CSSLayoutTests/Info.plist;
+				INFOPLIST_FILE = "css-layout-swift-tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ffbyone.CSSLayoutTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -423,7 +424,7 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = C3583GYSMX;
-				INFOPLIST_FILE = CSSLayoutTests/Info.plist;
+				INFOPLIST_FILE = "css-layout-swift-tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ffbyone.CSSLayoutTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -459,6 +460,7 @@
 				7B12701E1DCC03D100E0E888 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -100,16 +100,6 @@
   CSSNodeStyleSetFlexWrap([self cssNode], flexWrap);
 }
 
-- (void)css_setOverflow:(CSSOverflow)overflow
-{
-  CSSNodeStyleSetOverflow([self cssNode], overflow);
-}
-
-- (void)css_setFlex:(CGFloat)flex
-{
-  CSSNodeStyleSetFlex([self cssNode], flex);
-}
-
 - (void)css_setFlexGrow:(CGFloat)flexGrow
 {
   CSSNodeStyleSetFlexGrow([self cssNode], flexGrow);
@@ -180,20 +170,29 @@
   return CSSNodeLayoutGetDirection([self cssNode]);
 }
 
-- (void)css_applyLayout
+- (CGSize)css_sizeThatFits:(CGSize)constrainedSize
 {
-  NSAssert([NSThread isMainThread], @"Method called using a thread other than main!");
-  NSAssert([self css_usesFlexbox], @"css_applyLayout must be called on a node using css styling!");
+  NSAssert([NSThread isMainThread], @"CSS Layout calculation must be done on main.");
+  NSAssert([self css_usesFlexbox], @"CSS Layout is not enabled for this view.");
 
   _attachNodesRecursive(self);
 
-  CSSNodeRef node = [self cssNode];
+  const CSSNodeRef node = [self cssNode];
   CSSNodeCalculateLayout(
-    [self cssNode],
-    CSSNodeStyleGetWidth(node),
-    CSSNodeStyleGetHeight(node),
+    node,
+    constrainedSize.width,
+    constrainedSize.height,
     CSSNodeStyleGetDirection(node));
 
+  return (CGSize) {
+    .width = CSSNodeLayoutGetWidth(node),
+    .height = CSSNodeLayoutGetHeight(node),
+  };
+}
+
+- (void)css_applyLayout
+{
+  [self css_sizeThatFits:self.bounds.size];
   _updateFrameRecursive(self);
 }
 

@@ -99,6 +99,13 @@ class CSSLayoutTests: XCTestCase {
     XCTAssertEqual(parent.frame, CGRect(x: 0, y: 0, width: 400, height: 200))
     XCTAssertEqual(child.frame, CGRect(x: 0, y: 0, width: 400, height: 200))
   }
+
+  func testMeasureMode() {
+    let parent = Node(measure: { size in size })
+    parent.layout()
+    XCTAssertEqual(parent.frame.width, CGFloat.infinity)
+    XCTAssertEqual(parent.frame.height, CGFloat.infinity)
+  }
   
   func testPerformanceExample() {
     // This is an example of a performance test case.
