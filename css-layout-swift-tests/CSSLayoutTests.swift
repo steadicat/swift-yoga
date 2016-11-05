@@ -103,8 +103,8 @@ class CSSLayoutTests: XCTestCase {
   func testMeasureMode() {
     let parent = Node(measure: { size in size })
     parent.layout()
-    XCTAssertEqual(parent.frame.width, CGFloat.infinity)
-    XCTAssertEqual(parent.frame.height, CGFloat.infinity)
+    XCTAssertEqual(parent.frame.width, 0)
+    XCTAssertEqual(parent.frame.height, 0)
   }
   
   func testPerformanceExample() {

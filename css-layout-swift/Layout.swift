@@ -294,15 +294,19 @@ public class Node {
     CSSNodeSetMeasureFunc(node) { (node: Optional<OpaquePointer>, width: Float, widthMode: CSSMeasureMode, height: Float, heightMode: CSSMeasureMode) -> CSSSize in
       guard let context = CSSNodeGetContext(node) else {
         print("Warning: called measure on a node that is now gone")
-        return CSSSize(width: width, height: height)
+        return CSSSize(width: 0, height: 0)
       }
       guard let measure = Unmanaged<Node>.fromOpaque(context).takeUnretainedValue().measure else {
         print("Warning: called measure on a node without a measure function")
-        return CSSSize(width: width, height: height)
+        return CSSSize(width: 0, height: 0)
       }
-      let width = widthMode == CSSMeasureModeUndefined ? CGFloat.infinity : CGFloat(width)
-      let height = heightMode == CSSMeasureModeUndefined ? CGFloat.infinity : CGFloat(height)
-      let size = measure(CGSize(width: width, height: height))
+      let availableWidth = widthMode == CSSMeasureModeUndefined ? CGFloat.infinity : CGFloat(width)
+      let availableHeight = heightMode == CSSMeasureModeUndefined ? CGFloat.infinity : CGFloat(height)
+      let size = measure(CGSize(width: availableWidth, height: availableHeight))
+      guard size.width.isFinite && size.height.isFinite else {
+        print("Warning: measure function return an invalid size, ignoring")
+        return CSSSize(width: 0, height: 0)
+      }
       return CSSSize(width: Float(size.width), height: Float(size.height))
     }
   }
